@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ## Install php nginx mysql supervisor
 RUN apt update && \
-    apt install -y php-fpm php-cli php-gd php-mcrypt php-mysql php-curl \
+    apt install -y php-fpm php-cli php-gd php-mcrypt php-mysql php-curl php7.0-dev php-pear libsasl2-dev\
                        nginx \
                        curl \
 		       supervisor && \
@@ -12,6 +12,12 @@ RUN apt update && \
     echo "mysql-server mysql-server/root_password_again password" | debconf-set-selections && \
     apt install -y mysql-server && \
     rm -rf /var/lib/apt/lists/*
+
+RUN 	pecl install mongodb
+
+RUN echo "extension=mongodb.so" > /etc/php/7.0/fpm/conf.d/20-mongodb.ini && \
+	echo "extension=mongodb.so" > /etc/php/7.0/cli/conf.d/20-mongodb.ini && \
+	echo "extension=mongodb.so" > /etc/php/7.0/mods-available/mongodb.ini
 
 ## Configuration
 RUN sed -i 's/^listen\s*=.*$/listen = 127.0.0.1:9000/' /etc/php/7.0/fpm/pool.d/www.conf && \
