@@ -1,27 +1,18 @@
 docker-lemp
 ===========
 
-[![Docker Stars](https://img.shields.io/docker/stars/stenote/docker-lemp.svg)](https://hub.docker.com/r/stenote/docker-lemp/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/stenote/docker-lemp.svg)](https://hub.docker.com/r/stenote/docker-lemp/)
+[![Docker Stars](https://img.shields.io/docker/stars/deftstar/docker-lemp.svg)](https://hub.docker.com/r/deftstar/docker-lemp/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/deftstar/docker-lemp.svg)](https://hub.docker.com/r/deftstar/docker-lemp/)
 
 
-We suppose this is a develop environment for phpers.
+this package has been modified from https://github.com/stenote/docker-lemp
 
-Don't use it in product environment.
+-MYSQL server removed , MYSQL driver is still there.
++PHP MSSQL drivers added 
 
-# Usage
 
-    docker run -d --name=lemp \
-      -v /path/to/www/:/var/www/ \
-      -v /path/to/mysql:/var/lib/mysql \
-      -p port_of_nginx:80 \
-      stenote/docker-lemp:latest
+PHP 7.0
+nginx/1.10.0 
 
-# Detail
-
-## MySQL
-* user: root
-* (No password)
-
-## SSH
-We don't support SSH right now. You can use `docker exec` to enter the docker container.
+mssql drivers 
+https://www.microsoft.com/en-us/sql-server/developer-get-started/php-ubuntu
